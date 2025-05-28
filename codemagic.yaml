@@ -1,0 +1,15 @@
+workflows:
+  android-build:
+    name: Android Build
+    environment:
+      flutter: stable
+    scripts:
+      - name: Update Gradle to 8.2
+        script: |
+          sed -i '' 's/gradle-8.0-all.zip/gradle-8.2-all.zip/' android/gradle/wrapper/gradle-wrapper.properties
+      - name: Build APK
+        script: |
+          flutter pub get
+          flutter build apk
+    artifacts:
+      - build/app/outputs/flutter-apk/app-release.apk
