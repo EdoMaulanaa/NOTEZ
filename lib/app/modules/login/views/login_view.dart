@@ -6,7 +6,7 @@ import '../../../core/widgets/app_text_field.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
-  const LoginView({Key? key}) : super(key: key);
+  const LoginView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class LoginView extends GetView<LoginController> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const SizedBox(height: 40),
-                  // App Logo
+                  
                   Container(
                     width: 100,
                     height: 100,
@@ -49,7 +49,7 @@ class LoginView extends GetView<LoginController> {
                     ),
                   ),
                   const SizedBox(height: 24),
-                  // App Name
+                  
                   Text(
                     AppStrings.appName,
                     style: AppTextStyle.heading1.copyWith(
@@ -57,14 +57,14 @@ class LoginView extends GetView<LoginController> {
                     ),
                   ),
                   const SizedBox(height: 8),
-                  // App Description
+                  
                   const Text(
                     'Aplikasi Pemantauan Akademik Siswa',
                     style: AppTextStyle.body2,
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 40),
-                  // Email Field
+                  
                   AppTextField(
                     label: AppStrings.email,
                     hint: 'Masukkan email anda',
@@ -74,7 +74,7 @@ class LoginView extends GetView<LoginController> {
                     validator: controller.validateEmail,
                   ),
                   const SizedBox(height: 16),
-                  // Password Field
+                  
                   Obx(() => AppTextField(
                         label: AppStrings.password,
                         hint: 'Masukkan password anda',
@@ -88,14 +88,14 @@ class LoginView extends GetView<LoginController> {
                         validator: controller.validatePassword,
                       )),
                   const SizedBox(height: 24),
-                  // Login Button
+                  
                   Obx(() => AppButton(
                         text: AppStrings.login,
                         onPressed: controller.login,
                         isLoading: controller.isLoading.value,
                       )),
                   const SizedBox(height: 16),
-                  // Demo Credentials
+                  
                   const Text(
                     'Demo Credentials:',
                     style: TextStyle(

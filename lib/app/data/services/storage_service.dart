@@ -22,7 +22,7 @@ class StorageService {
   Future<Map<String, dynamic>> readJsonFile(String filename) async {
     try {
       if (kIsWeb) {
-        // Use shared preferences on web
+        
         final prefs = await SharedPreferences.getInstance();
         final jsonStr = prefs.getString(filename);
         if (jsonStr != null) {
@@ -30,7 +30,7 @@ class StorageService {
         }
         return {};
       } else {
-        // Use file system on mobile
+        
         final file = await _getLocalFile(filename);
         if (await file.exists()) {
           final contents = await file.readAsString();
@@ -47,7 +47,7 @@ class StorageService {
   Future<List<dynamic>> readJsonList(String filename) async {
     try {
       if (kIsWeb) {
-        // Use shared preferences on web
+        
         final prefs = await SharedPreferences.getInstance();
         final jsonStr = prefs.getString(filename);
         if (jsonStr != null) {
@@ -55,7 +55,7 @@ class StorageService {
         }
         return [];
       } else {
-        // Use file system on mobile
+        
         final file = await _getLocalFile(filename);
         if (await file.exists()) {
           final contents = await file.readAsString();
@@ -71,11 +71,11 @@ class StorageService {
 
   Future<void> writeJsonFile(String filename, Map<String, dynamic> data) async {
     if (kIsWeb) {
-      // Use shared preferences on web
+      
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString(filename, json.encode(data));
     } else {
-      // Use file system on mobile
+      
       final file = await _getLocalFile(filename);
       await file.writeAsString(json.encode(data));
     }
@@ -83,11 +83,11 @@ class StorageService {
 
   Future<void> writeJsonList(String filename, List<dynamic> data) async {
     if (kIsWeb) {
-      // Use shared preferences on web
+      
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString(filename, json.encode(data));
     } else {
-      // Use file system on mobile
+      
       final file = await _getLocalFile(filename);
       await file.writeAsString(json.encode(data));
     }
@@ -121,10 +121,10 @@ class StorageService {
     }
   }
 
-  // These methods may not work well in web environment
+  
   Future<void> exportData(String destinationPath) async {
     if (kIsWeb) {
-      // Not implemented for web
+      
       return;
     }
     
@@ -139,7 +139,7 @@ class StorageService {
     await for (final entity in sourceDirectory.list()) {
       if (entity is File && entity.path.endsWith('.json')) {
         final fileName = entity.path.split('/').last;
-        final newFile = File('${destinationPath}/$fileName');
+        final newFile = File('$destinationPath/$fileName');
         await entity.copy(newFile.path);
       }
     }
@@ -147,7 +147,7 @@ class StorageService {
 
   Future<void> importData(String sourcePath) async {
     if (kIsWeb) {
-      // Not implemented for web
+      
       return;
     }
     

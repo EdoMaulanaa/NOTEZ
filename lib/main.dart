@@ -3,60 +3,75 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'app/core/constants/app_constants.dart';
 import 'app/routes/app_pages.dart';
+import 'constants/theme.dart';
+import 'screens/login_screen.dart';
+import 'screens/home_screen.dart';
+import 'screens/splash_screen.dart';
+import 'models/grade_data.dart';
+import 'models/point_data.dart';
+import 'models/attendance_data.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
-  // Set preferred orientations
+
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-  
-  // Set system UI overlay style
+
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.light,
+      statusBarIconBrightness: Brightness.dark,
       systemNavigationBarColor: Colors.white,
       systemNavigationBarIconBrightness: Brightness.dark,
     ),
   );
-  
+
+  await _preloadData();
+
   runApp(const MyApp());
 }
 
+Future<void> _preloadData() async {
+  final grades = GradeManager().grades;
+  final points = PointManager().points;
+  final attendance = AttendanceManager().attendance;
+
+  print('Preloaded data:');
+  print(
+      'Average grade: ${grades.calculateOverallAverage().toStringAsFixed(1)}');
+  print('Total pelanggaran: ${points.totalPelanggaranPoints}');
+  print('Total penghargaan: ${points.totalPrestasiPoints}');
+  print(
+      'Total absensi: ${attendance.totalAlpha + attendance.totalIzin + attendance.totalSakit}');
+}
+
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: AppStrings.appName,
-      initialRoute: AppPages.INITIAL,
-      getPages: AppPages.routes,
-      theme: ThemeData(
-        primaryColor: AppColors.primary,
-        scaffoldBackgroundColor: AppColors.background,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: AppColors.primary,
-          primary: AppColors.primary,
-          secondary: AppColors.accent,
-        ),
-        appBarTheme: const AppBarTheme(
-          backgroundColor: AppColors.primary,
-          foregroundColor: Colors.white,
-          elevation: 0,
-        ),
-        textTheme: const TextTheme(
-          displayLarge: AppTextStyle.heading1,
-          displayMedium: AppTextStyle.heading2,
-          displaySmall: AppTextStyle.heading3,
-          bodyLarge: AppTextStyle.body1,
-          bodyMedium: AppTextStyle.body2,
-        ),
-      ),
+    return MaterialApp(
+      title: 'NOTEZ',
       debugShowCheckedModeBanner: false,
+      theme: AppTheme.lightTheme,
+      initialRoute: '/',
+      builder: (context, child) {
+        return MediaQuery(
+          data: MediaQuery.of(context).copyWith(
+            padding: EdgeInsets.zero,
+            viewPadding: EdgeInsets.zero,
+            viewInsets: EdgeInsets.zero,
+          ),
+          child: child!,
+        );
+      },
+      routes: {
+        '/': (context) => const SplashScreen(),
+        '/login': (context) => const LoginScreen(),
+        '/home': (context) => const HomeScreen(),
+      },
     );
   }
 }

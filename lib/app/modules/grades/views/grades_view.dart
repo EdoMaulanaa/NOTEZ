@@ -6,7 +6,7 @@ import '../../../core/widgets/base_layout.dart';
 import '../controllers/grades_controller.dart';
 
 class GradesView extends GetView<GradesController> {
-  const GradesView({Key? key}) : super(key: key);
+  const GradesView({super.key});
 
   @override
   Widget build(BuildContext context) {

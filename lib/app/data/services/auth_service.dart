@@ -9,13 +9,13 @@ class AuthService {
   final String _currentUserKey = 'current_user';
 
   Future<bool> register(String email, String password, String role, {String studentId = ''}) async {
-    // Check if email already exists
+    
     final users = await _getUsers();
     if (users.any((user) => user['email'] == email)) {
       return false;
     }
 
-    // Create new user
+    
     final user = User(
       email: email,
       password: password,
@@ -23,13 +23,13 @@ class AuthService {
       studentId: studentId,
     );
 
-    // Add user to users list
+    
     await _storageService.appendToJsonList(_usersFile, user.toJson());
     return true;
   }
 
   Future<bool> login(String email, String password) async {
-    // Check if user exists and password matches
+    
     final users = await _getUsers();
     final userIndex = users.indexWhere(
       (user) => user['email'] == email && user['password'] == password,
@@ -39,7 +39,7 @@ class AuthService {
       return false;
     }
 
-    // Save current user to SharedPreferences
+    
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(_currentUserKey, json.encode(users[userIndex]));
     return true;
@@ -70,7 +70,7 @@ class AuthService {
     return List<Map<String, dynamic>>.from(usersList);
   }
 
-  // For demo purpose, create default users if none exist
+  
   Future<void> createDefaultUsers() async {
     if (!await _storageService.fileExists(_usersFile)) {
       await _storageService.writeJsonList(_usersFile, [

@@ -36,7 +36,7 @@ class MeritDemeritService {
   Future<void> addMeritDemerit(MeritDemerit meritDemerit) async {
     await _storageService.appendToJsonList(_meritDemeritFile, meritDemerit.toJson());
     
-    // Update the student's total merit/demerit points
+    
     final student = await _studentService.getStudent(meritDemerit.studentId);
     if (student != null) {
       int meritPoints = student.meritPoints;
@@ -71,7 +71,7 @@ class MeritDemeritService {
     final jsonList = meritDemerits.map((md) => md.toJson()).toList();
     await _storageService.writeJsonList(_meritDemeritFile, jsonList);
     
-    // Update the student's total merit/demerit points
+    
     final student = await _studentService.getStudent(studentId);
     if (student != null) {
       int meritPoints = student.meritPoints;
@@ -98,7 +98,7 @@ class MeritDemeritService {
     }
   }
 
-  // For demo purposes, create default merit/demerit records if none exist
+  
   Future<void> createDefaultMeritDemerits() async {
     if (!await _storageService.fileExists(_meritDemeritFile)) {
       final now = DateTime.now();

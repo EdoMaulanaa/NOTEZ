@@ -4,7 +4,7 @@ import '../../../core/constants/app_constants.dart';
 import '../controllers/splash_controller.dart';
 
 class SplashView extends GetView<SplashController> {
-  const SplashView({Key? key}) : super(key: key);
+  const SplashView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class SplashView extends GetView<SplashController> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // App Logo
+            
             Container(
               width: 120,
               height: 120,
@@ -41,7 +41,7 @@ class SplashView extends GetView<SplashController> {
               ),
             ),
             const SizedBox(height: 24),
-            // App Name
+            
             Text(
               AppStrings.appName,
               style: const TextStyle(
@@ -51,7 +51,7 @@ class SplashView extends GetView<SplashController> {
               ),
             ),
             const SizedBox(height: 8),
-            // App Description
+            
             const Text(
               'Aplikasi Pemantauan Akademik Siswa',
               style: TextStyle(
@@ -60,7 +60,7 @@ class SplashView extends GetView<SplashController> {
               ),
             ),
             const SizedBox(height: 40),
-            // Loading Indicator
+            
             const CircularProgressIndicator(
               valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
             ),

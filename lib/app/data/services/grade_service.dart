@@ -85,7 +85,7 @@ class GradeService {
     await _storageService.writeJsonList(_gradesFile, jsonList);
   }
 
-  // For demo purposes, create default grades if none exist
+  
   Future<void> createDefaultGrades() async {
     if (!await _storageService.fileExists(_gradesFile)) {
       final defaultGrades = [

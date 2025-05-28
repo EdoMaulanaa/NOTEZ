@@ -14,7 +14,7 @@ class AppTextField extends StatelessWidget {
   final bool enabled;
 
   const AppTextField({
-    Key? key,
+    super.key,
     required this.label,
     this.hint,
     required this.controller,
@@ -25,7 +25,7 @@ class AppTextField extends StatelessWidget {
     this.suffixIcon,
     this.onSuffixIconPressed,
     this.enabled = true,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

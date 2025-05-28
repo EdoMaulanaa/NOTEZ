@@ -6,13 +6,13 @@ import '../../../core/widgets/base_layout.dart';
 import '../controllers/rules_controller.dart';
 
 class RulesView extends GetView<RulesController> {
-  const RulesView({Key? key}) : super(key: key);
+  const RulesView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BaseLayout(
       title: AppStrings.rules,
-      currentIndex: 3, // We'll use the same index as attendance since rules is accessible from home only
+      currentIndex: 3, 
       showBackButton: true,
       body: Obx(() {
         if (controller.isLoading.value) {

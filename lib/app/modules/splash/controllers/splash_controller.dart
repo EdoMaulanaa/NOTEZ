@@ -22,7 +22,7 @@ class SplashController extends GetxController {
   }
 
   Future<void> _initializeApp() async {
-    // Create default data for demo purposes
+    
     await _authService.createDefaultUsers();
     await _studentService.createDefaultStudent();
     await _gradeService.createDefaultGrades();
@@ -30,10 +30,10 @@ class SplashController extends GetxController {
     await _meritDemeritService.createDefaultMeritDemerits();
     await _schoolRuleService.createDefaultRules();
 
-    // Simulate loading time
+    
     await Future.delayed(const Duration(seconds: 2));
 
-    // Check if user is logged in
+    
     final isLoggedIn = await _authService.isLoggedIn();
     if (isLoggedIn) {
       Get.offAllNamed(Routes.HOME);

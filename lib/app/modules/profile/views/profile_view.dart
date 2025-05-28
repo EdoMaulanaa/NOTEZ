@@ -7,7 +7,7 @@ import '../../../core/widgets/base_layout.dart';
 import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
-  const ProfileView({Key? key}) : super(key: key);
+  const ProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class ProfileView extends GetView<ProfileController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Profile Avatar
+              
               CircleAvatar(
                 radius: 50,
                 backgroundColor: AppColors.primary,
@@ -45,20 +45,20 @@ class ProfileView extends GetView<ProfileController> {
                 ),
               ),
               const SizedBox(height: 16),
-              // User Email
+              
               Text(
                 user.email,
                 style: AppTextStyle.heading2,
               ),
               const SizedBox(height: 4),
-              // User Role
+              
               Text(
                 controller.userRole,
                 style: AppTextStyle.body2,
               ),
               const SizedBox(height: 24),
               
-              // Student Information (if available)
+              
               if (student != null)
                 AppCard(
                   child: Column(
@@ -79,7 +79,7 @@ class ProfileView extends GetView<ProfileController> {
                 ),
               const SizedBox(height: 16),
               
-              // App Information
+              
               AppCard(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,7 +97,7 @@ class ProfileView extends GetView<ProfileController> {
               ),
               const SizedBox(height: 24),
               
-              // Logout Button
+              
               AppButton(
                 text: AppStrings.logout,
                 onPressed: controller.logout,

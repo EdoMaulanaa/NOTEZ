@@ -15,7 +15,7 @@ class AttendanceController extends GetxController {
   final RxList<Attendance> attendanceList = <Attendance>[].obs;
   final RxBool isLoading = true.obs;
   
-  // Statistics
+  
   final RxInt totalPresent = 0.obs;
   final RxInt totalAbsent = 0.obs;
   final RxInt totalLate = 0.obs;
@@ -59,7 +59,7 @@ class AttendanceController extends GetxController {
 
   Future<void> _loadAttendance(String studentId) async {
     try {
-      // Get 30 days of attendance
+      
       final now = DateTime.now();
       final startDate = now.subtract(const Duration(days: 30));
       
@@ -69,7 +69,7 @@ class AttendanceController extends GetxController {
         now,
       );
       
-      // Sort by date (newest first)
+      
       attendanceRecords.sort((a, b) => b.date.compareTo(a.date));
       attendanceList.assignAll(attendanceRecords);
     } catch (e) {

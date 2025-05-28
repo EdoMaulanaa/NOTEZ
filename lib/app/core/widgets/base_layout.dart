@@ -12,7 +12,7 @@ class BaseLayout extends StatelessWidget {
   final Widget? bottomSheet;
 
   const BaseLayout({
-    Key? key,
+    super.key,
     required this.title,
     required this.body,
     this.currentIndex = 0,
@@ -20,7 +20,7 @@ class BaseLayout extends StatelessWidget {
     this.actions,
     this.floatingActionButton,
     this.bottomSheet,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -83,7 +83,7 @@ class AttendanceService {
     await _storageService.writeJsonList(_attendanceFile, jsonList);
   }
 
-  // For demo purposes, create default attendance records if none exist
+  
   Future<void> createDefaultAttendance() async {
     if (!await _storageService.fileExists(_attendanceFile)) {
       final now = DateTime.now();

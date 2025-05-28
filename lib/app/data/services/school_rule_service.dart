@@ -42,7 +42,7 @@ class SchoolRuleService {
     await _storageService.writeJsonList(_rulesFile, jsonList);
   }
 
-  // For demo purposes, create default school rules if none exist
+  
   Future<void> createDefaultRules() async {
     if (!await _storageService.fileExists(_rulesFile)) {
       final defaultRules = [

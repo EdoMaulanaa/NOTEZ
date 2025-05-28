@@ -1,8 +1,8 @@
 class User {
   final String email;
   final String password;
-  final String role; // 'student' or 'parent'
-  final String studentId; // Links to a student for parent users
+  final String role; 
+  final String studentId; 
 
   User({
     required this.email,

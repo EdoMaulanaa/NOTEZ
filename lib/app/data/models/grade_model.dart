@@ -4,7 +4,7 @@ class Grade {
   final String semester;
   final int academicYear;
   final double score;
-  final String grade; // A, B, C, etc.
+  final String grade; 
 
   Grade({
     required this.studentId,

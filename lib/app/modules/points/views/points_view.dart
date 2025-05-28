@@ -6,7 +6,7 @@ import '../../../core/widgets/base_layout.dart';
 import '../controllers/points_controller.dart';
 
 class PointsView extends GetView<PointsController> {
-  const PointsView({Key? key}) : super(key: key);
+  const PointsView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class PointsView extends GetView<PointsController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Student Info Card with Points Summary
+              
               AppCard(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,7 +63,7 @@ class PointsView extends GetView<PointsController> {
               ),
               const SizedBox(height: 24),
               
-              // Merit Points List
+              
               Text(
                 'Riwayat Penghargaan',
                 style: AppTextStyle.heading3,
@@ -94,7 +94,7 @@ class PointsView extends GetView<PointsController> {
               
               const SizedBox(height: 24),
               
-              // Demerit Points List
+              
               Text(
                 'Riwayat Pelanggaran',
                 style: AppTextStyle.heading3,

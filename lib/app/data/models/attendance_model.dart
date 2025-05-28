@@ -1,7 +1,7 @@
 class Attendance {
   final String studentId;
   final DateTime date;
-  final String status; // 'present', 'absent', 'late', 'sick'
+  final String status; 
   final String note;
 
   Attendance({

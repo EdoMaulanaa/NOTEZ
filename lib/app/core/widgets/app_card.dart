@@ -11,7 +11,7 @@ class AppCard extends StatelessWidget {
   final BorderRadius? borderRadius;
 
   const AppCard({
-    Key? key,
+    super.key,
     required this.child,
     this.padding,
     this.margin,
@@ -19,7 +19,7 @@ class AppCard extends StatelessWidget {
     this.elevation,
     this.onTap,
     this.borderRadius,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -42,7 +42,7 @@ class StudentService {
     await _storageService.writeJsonList(_studentsFile, jsonList);
   }
 
-  // For demo purposes, create a default student if none exist
+  
   Future<void> createDefaultStudent() async {
     if (!await _storageService.fileExists(_studentsFile)) {
       await _storageService.writeJsonList(_studentsFile, [

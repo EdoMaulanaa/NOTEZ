@@ -6,7 +6,7 @@ import '../../../core/widgets/base_layout.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
-  const HomeView({Key? key}) : super(key: key);
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class HomeView extends GetView<HomeController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Student Info Card
+              
               AppCard(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -102,7 +102,7 @@ class HomeView extends GetView<HomeController> {
                 style: AppTextStyle.heading3,
               ),
               const SizedBox(height: 16),
-              // Menu Grid
+              
               GridView.count(
                 crossAxisCount: 2,
                 shrinkWrap: true,

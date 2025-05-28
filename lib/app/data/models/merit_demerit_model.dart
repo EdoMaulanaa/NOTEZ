@@ -2,7 +2,7 @@ class MeritDemerit {
   final String id;
   final String studentId;
   final DateTime date;
-  final String type; // 'merit' or 'demerit'
+  final String type; 
   final String reason;
   final int points;
 
